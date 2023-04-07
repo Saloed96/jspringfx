@@ -25,12 +25,16 @@ plugins {
 }
 
 compileJava {
-  sourceCompatibility = 11
-  targetCompatibility = 11
+  sourceCompatibility = 17
+  targetCompatibility = 17
 }
 
 repositories {
   jcenter()
+  mavenCentral()
+  gradlePluginPortal()
+  maven { url 'https://repo.spring.io/milestone' }
+  maven { url 'https://repo.spring.io/snapshot' }
 }
 
 javafx {
@@ -47,16 +51,18 @@ apply plugin: 'jpro-gradle-plugin'
 /**
  * App Main Class
  */
-//mainClassName = 'one.jpro.hellojpro.HelloJPro'
-mainClassName = 'one.jpro.hellojpro.HelloJProFXML'
-
-application {
-  mainModule = moduleName
-}
+mainClassName = 'com.saloed.jspringfx.App'
 
 jpro {
   JVMArgs << '-Xmx1000m'
 
   // jpro server port
-  port = 8080
+  port = 8081
+}
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-web:3.0.4'
+  testImplementation('org.springframework.boot:spring-boot-starter-test:3.0.4') {
+    exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+  }
 }

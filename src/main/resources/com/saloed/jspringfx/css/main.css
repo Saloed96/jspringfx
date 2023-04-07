@@ -6,7 +6,7 @@
     -fx-font-size: 16px;
 }
 
-.hello-label {
+.demo-label {
     -fx-translate-y: -80px;
     -fx-text-fill: #999;
     -fx-font-size: 32px;

@@ -1,4 +1,4 @@
-package one.jpro.hellojpro;
+package com.saloed.jspringfx;
 
 import com.jpro.webapi.JProApplication;
 import com.jpro.webapi.WebAPI;
@@ -6,22 +6,28 @@ import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Hello JPro FXML controller.
+ * JavaFX SpringBoot Jpro FXML controller.
  *
- * @author Florian Kirmaier
+ * @author Saloed
  */
-public class HelloJProFXMLController implements Initializable {
+@Component
+public class MainCtrl implements Initializable {
 
     @FXML
     public Label platformLabel;
@@ -34,6 +40,11 @@ public class HelloJProFXMLController implements Initializable {
 
     protected JProApplication jproApplication;
     protected ParallelTransition pt;
+
+    public static StringProperty name = new SimpleStringProperty("");
+
+    @Autowired
+    private MainService service;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,5 +75,11 @@ public class HelloJProFXMLController implements Initializable {
     protected void init(JProApplication jproApplication) {
         this.jproApplication = jproApplication;
         initLogoAnimation(this.logo);
+        platformLabel.textProperty().bind(name);
+    }
+
+
+    public void onClick(ActionEvent actionEvent) {
+        name.set(service.getText());
     }
 }

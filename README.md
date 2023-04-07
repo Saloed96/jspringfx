@@ -1,4 +1,4 @@
-# HelloJPro
+# JSpringFX
 
 This project, is a hello-world for [jpro, which enables javafx in the web.](https://www.jpro.one/)
 
@@ -29,17 +29,17 @@ More about JPRO:
 
 ### Open jpro app in Web Browser ###
 ```
-http://localhost:8080/index.html
+http://localhost:8081/index.html
 ```
 
 ### Show all jpro apps in Browser ####
 ```
-http://localhost:8080/test/default
+http://localhost:8081/test/default
 ```
 
 ### Open jpro app in fullscreen ####
 ```
-http://localhost:8080/test/fullscreen/[app-name]
+http://localhost:8081/test/fullscreen/[app-name]
 ```
 
 
@@ -62,7 +62,7 @@ Create a zip which contains the application with the following command:
 ```groovy
 ./gradlew jproRelease
 ```
-The path of the zip-file is the following: `build/distributions/HelloJPro-jpro.zip`
+The path of the zip-file is the following: `build/distributions/JSpringFx-jpro.zip`
 
 Now copy this file to your Server and unzip it.
 
