@@ -1,13 +1,6 @@
 # JSpringFX
 
-This project, is a hello-world for [jpro, which enables javafx in the web.](https://www.jpro.one/)
-
-[Here you can see this program running.](https://demos.jpro.one/helloworld.html)
-
-More about JPRO: 
- * Website: [jpro.one](https://www.jpro.one/)
- * Twitter: [@jpro_one](https://twitter.com/jpro_one)
- * Ticket System: [JPro-tickets](https://github.com/JPro-one/JPro-tickets)
+This project, is a hello-world for JavaFX + SpringBoot + Jpro + Gradle + FXML
 
 # How to start #
 
