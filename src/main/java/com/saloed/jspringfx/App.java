@@ -11,6 +11,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * JavaFX + SpringBoot + Jpro + Gradle + FXML application.
@@ -30,7 +31,7 @@ public class App extends JProApplication {
         // load user interface as FXML file
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/saloed/jspringfx/fxml/main.fxml"));
         loader.setControllerFactory(context::getBean);
-//        loader.setResources(ResourceBundle.getBundle("l10n/jspringfx"));
+        loader.setResources(ResourceBundle.getBundle("l10n/jspringfx"));
         Scene scene = null;
         try {
             Parent root = loader.load();

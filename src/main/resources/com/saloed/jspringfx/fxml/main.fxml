@@ -15,6 +15,6 @@
     <ImageView fx:id="logo" fitWidth="300" preserveRatio="true">
         <Image url="@../img/JPRO_logo_rgb.png"/>
     </ImageView>
-    <Button text="Click Me" onAction="#onClick" StackPane.alignment="BOTTOM_LEFT"/>
+    <Button text="%text" onAction="#onClick" StackPane.alignment="BOTTOM_LEFT"/>
     <Label fx:id="platformLabel" text="Platform: " styleClass="platform-label" StackPane.alignment="BOTTOM_CENTER"/>
 </StackPane>
