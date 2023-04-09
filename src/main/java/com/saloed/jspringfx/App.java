@@ -1,6 +1,7 @@
 package com.saloed.jspringfx;
 
 import com.jpro.webapi.JProApplication;
+import com.sun.javafx.application.ParametersImpl;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +12,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -25,9 +27,6 @@ public class App extends JProApplication {
 
     @Override
     public void start(Stage stage) {
-        context = new SpringApplicationBuilder(App.class)
-            .web(WebApplicationType.NONE)
-            .run();
         // load user interface as FXML file
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/saloed/jspringfx/fxml/main.fxml"));
         loader.setControllerFactory(context::getBean);
@@ -49,6 +48,26 @@ public class App extends JProApplication {
 
         // open JavaFX window
         stage.show();
+    }
+
+    @Override
+    public void init() throws Exception {
+        context = springBootApplicationContext();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        context.close();
+    }
+
+    private ConfigurableApplicationContext springBootApplicationContext() {
+        var args = Optional.ofNullable(getParameters())
+            .orElse(new ParametersImpl())
+            .getRaw()
+            .toArray(String[]::new);
+        return new SpringApplicationBuilder(App.class)
+            .web(WebApplicationType.NONE)
+            .run(args);
     }
 
     /**
